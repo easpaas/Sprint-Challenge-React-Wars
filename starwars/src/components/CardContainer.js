@@ -28,7 +28,11 @@ const CardContainer = ({results}) => {
             return(
               <Card 
                 key={index}
-                name={character.name} 
+                name={character.name}
+                height={character.height}
+                weight={character.mass}
+                hair={character.hair_color}
+                eyes={character.eye_color}
               />
             )
           })

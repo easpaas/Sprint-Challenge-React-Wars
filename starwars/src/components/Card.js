@@ -11,18 +11,33 @@ const CardStyles = styled.div`
   margin: 5%;
 `;
 
-const Name = styled.h2`
+const ContentContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-style: italic;
   border: 1px solid red;
+  margin: 2%;
+`;
+
+const Content = styled.p`
+  width: 50%;
 `;
 
 /*
  *******************************
  */
 
-const Card = ({name}) => {
+const Card = ({name, height, weight, hair, eyes}) => {
   return (
     <CardStyles>
-      <Name>{name}</Name>
+      <h3>{name}</h3>
+      <ContentContainer>
+        <Content>Height: {height}</Content>
+        <Content>Mass: {weight}</Content>
+        <Content>Hair color: {hair}</Content>
+        <Content>Eye color: {eyes}</Content>
+      </ContentContainer>
     </CardStyles>
   );
 }
