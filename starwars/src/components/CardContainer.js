@@ -20,18 +20,21 @@ const Container = styled.div`
 
 const CardContainer = ({results}) => {
   return (
-    <Container>
-      {
-        results.map((character, index) => {
-          return(
-            <Card 
-              key={index}
-              name={character.name} 
-            />
-          )
-        })
-      }
-    </Container>
+    <>
+      <h2>Characters</h2>
+      <Container>
+        {
+          results.map((character, index) => {
+            return(
+              <Card 
+                key={index}
+                name={character.name} 
+              />
+            )
+          })
+        }
+      </Container>
+    </>
   );
 }
 
