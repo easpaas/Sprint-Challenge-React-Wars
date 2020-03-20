@@ -1,18 +1,50 @@
-import React from 'react';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import CardContainer from './components/CardContainer';
+import styled from 'styled-components';
+import axios from 'axios';
+
+/*     Styled Components
+ ******************************
+ */
+
+const AppStyles = styled.div`
+  text-align: center;
+`;
+
+const HeaderStyles = styled.div`
+  padding: 2%;
+  margin-bottom: 4%;
+  font-size: 1.5rem;
+  border: 4px solid red;
+  color: #443e3e;
+  text-shadow: 1px 1px 5px #fff;
+`;
+
+/*
+ *******************************
+ */
 
 const App = () => {
-  // Try to think through what state you'll need for this app before starting. Then build out
-  // the state properties here.
+  const [data, setData] = useState([]);
+  const proxy = "https://cors-anywhere.herokuapp.com/";
+  const url = "https://swapi.co/api/people";
 
-  // Fetch characters from the star wars api in an effect hook. Remember, anytime you have a 
-  // side effect in a component, you want to think about which state and/or props it should
-  // sync up with, if any.
+  useEffect(() => {
+    axios.get(proxy + url)
+      .then(response => {
+        console.log(response.data);
+        setData(response.data.results);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }, []);
 
   return (
-    <div className="App">
-      <h1 className="Header">React Wars</h1>
-    </div>
+    <AppStyles>
+      <HeaderStyles>React Wars</HeaderStyles>
+      <CardContainer results={data} />
+    </AppStyles>
   );
 }
 
